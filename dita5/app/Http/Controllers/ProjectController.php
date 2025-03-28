@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Todo;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -11,7 +11,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('blog.home');
+         $data = Todo::all();
+        // return response()->json($data);
+        // return response()->streamDownload(function(){
+        //     echo file_get_contents("https://laravel.com/docs/12.x");
+        // },"documentation.html");
+        // return view('blog.home');
+        return view('blog.home',['todos'=>$data]);
     }
 
     /**
